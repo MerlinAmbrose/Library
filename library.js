@@ -38,11 +38,19 @@ function addToTable(){
     subcell1.innerHTML = myLibrary[i].author
     let subcell2 = document.createElement('td')
     subcell2.innerHTML = myLibrary[i].pages
+    let subcell3= document.createElement('td')
+    let subsubcell3 = document.createElement('input')
+    subsubcell3.setAttribute('type', 'checkbox')
     container.appendChild(cell)
     cell.appendChild(subcell).className = 'holder'
     cell.appendChild(subcell1).className = 'holder'
-    cell.appendChild(subcell2). className = 'holder'
-
+    cell.appendChild(subcell2).className = 'holder'
+    cell.appendChild(subcell3).className = 'holder'
+    subcell3.appendChild(subsubcell3).className = 'toggle'
+    subcell4 = document.createElement('td')
+    cell.appendChild(subcell4).className = 'holder'
+    let subsubcell4 = document.createElement('button')
+    subcell4.appendChild(subsubcell4).className = 'rmv';
   }
 }
 addToTable()
@@ -58,4 +66,24 @@ function openForm() {
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
   }
-  
+
+let rmvbutton = document.getElementsByClassName('rmv')
+console.log(rmvbutton)
+/* for (let i = 0; i < rmvbutton.length; i++){
+    console.log(rmvbutton[i])  
+    rmvbutton[i].addEventListener('click', function(){
+      let parent = rmvbutton[i].parentNode;
+      let parentparent = parent.parentNode;
+      parentparent.parentNode.removeChild(parentparent)
+    })
+  }
+   */
+
+for (let i = 0; i < rmvbutton.length; i++){
+    const button = rmvbutton[i];
+    rmvbutton[i].addEventListener('click', function(){
+      let parent = button.parentNode;
+      let parentparent = parent.parentNode;
+      parentparent.parentNode.removeChild(parentparent)
+    })
+  }
