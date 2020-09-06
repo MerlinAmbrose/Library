@@ -9,15 +9,21 @@ function addToLibrary (title, author, pages) {
   myLibrary.push(new book(title, author, pages))
 }
 
-addToLibrary('dog','cat','45')
-addToLibrary('mouse','cat','55')
-addToLibrary('deer','cat','66')
 
-let fieldone = document.getElementById('title').value
+function saveBook() {
+
+  let titlez = document.getElementById('title').value;
+  let authorz = document.getElementById('author').value;
+  let pagesz = document.getElementById('pages').value;
+  //console.log(titlez, authorz, pagesz)
+  addToLibrary(titlez, authorz, pagesz)
+  addToTable()
+  closeForm()
+  }
+  
 
 
-
-console.table(myLibrary)
+//console.table(myLibrary)
 function titles () {
   let arr = [];
   myLibrary.forEach(function(x){
@@ -26,18 +32,17 @@ function titles () {
   return arr
 }
 titles()
-console.log(titles())
+//console.log(titles())
 let container = document.getElementById('customers');
 function addToTable(){
-  for (let i = 0; i < myLibrary.length; i++){
-    console.log(i)
+    
     let cell = document.createElement('tr');
     let subcell = document.createElement('td')
-    subcell.innerHTML = myLibrary[i].title
+    subcell.innerHTML = myLibrary[myLibrary.length -1].title
     let subcell1 = document.createElement('td')
-    subcell1.innerHTML = myLibrary[i].author
+    subcell1.innerHTML = myLibrary[myLibrary.length -1].author
     let subcell2 = document.createElement('td')
-    subcell2.innerHTML = myLibrary[i].pages
+    subcell2.innerHTML = myLibrary[myLibrary.length -1].pages
     let subcell3= document.createElement('td')
     let subsubcell3 = document.createElement('input')
     subsubcell3.setAttribute('type', 'checkbox')
@@ -51,7 +56,6 @@ function addToTable(){
     cell.appendChild(subcell4).className = 'holder'
     let subsubcell4 = document.createElement('button')
     subcell4.appendChild(subsubcell4).className = 'rmv';
-  }
 }
 addToTable()
 
@@ -68,7 +72,7 @@ function openForm() {
   }
 
 let rmvbutton = document.getElementsByClassName('rmv')
-console.log(rmvbutton)
+//console.log(rmvbutton)
 /* for (let i = 0; i < rmvbutton.length; i++){
     console.log(rmvbutton[i])  
     rmvbutton[i].addEventListener('click', function(){
