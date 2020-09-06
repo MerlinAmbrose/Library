@@ -19,6 +19,7 @@ function saveBook() {
   addToLibrary(titlez, authorz, pagesz)
   addToTable()
   closeForm()
+  rmv()
   }
   
 
@@ -35,7 +36,7 @@ titles()
 //console.log(titles())
 let container = document.getElementById('customers');
 function addToTable(){
-    
+    if (myLibrary.length > 0){
     let cell = document.createElement('tr');
     let subcell = document.createElement('td')
     subcell.innerHTML = myLibrary[myLibrary.length -1].title
@@ -56,6 +57,7 @@ function addToTable(){
     cell.appendChild(subcell4).className = 'holder'
     let subsubcell4 = document.createElement('button')
     subcell4.appendChild(subsubcell4).className = 'rmv';
+    }
 }
 addToTable()
 
@@ -70,24 +72,22 @@ function openForm() {
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
   }
-
-let rmvbutton = document.getElementsByClassName('rmv')
-//console.log(rmvbutton)
-/* for (let i = 0; i < rmvbutton.length; i++){
-    console.log(rmvbutton[i])  
-    rmvbutton[i].addEventListener('click', function(){
-      let parent = rmvbutton[i].parentNode;
-      let parentparent = parent.parentNode;
-      parentparent.parentNode.removeChild(parentparent)
-    })
-  }
-   */
-
-for (let i = 0; i < rmvbutton.length; i++){
-    const button = rmvbutton[i];
-    rmvbutton[i].addEventListener('click', function(){
-      let parent = button.parentNode;
-      let parentparent = parent.parentNode;
-      parentparent.parentNode.removeChild(parentparent)
-    })
-  }
+  
+  let rmvbutton = document.getElementsByClassName('rmv')
+  
+  function rmv() {
+    if (myLibrary.length > 0) {
+      let rmvbutton = document.getElementsByClassName('rmv')
+      console.log('hi')  
+      for (let i = 0; i < rmvbutton.length; i++){
+        const button = rmvbutton[i];
+        rmvbutton[i].addEventListener('click', function(){
+          let parent = button.parentNode;
+          let parentparent = parent.parentNode;
+          parentparent.parentNode.removeChild(parentparent)
+        })
+      }
+    } else {console.log('sorry')}
+    }
+    
+  
